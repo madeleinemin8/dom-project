@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>It's My Party</title>
+        <style> 
+            div {
+                user-select: none;
+                cursor: pointer;
+            }
+
+            .row {
+                display: -ms-flexbox;
+                display: flex;
+                padding-top: 200px;
+            }
+  
+            .column {
+                -ms-flex: 25%;
+                flex: 25%;
+                padding: 0 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div class="row">
+                <div class="column">
+                    <img id="dancer1Img" src="images/dancer1.png" alt="Dancer 1 Animation">
+                </div>
+                <div class="column">
+                    <img id="dancer2Img" src="images/dancer2.png" alt="Dancer 2 Animation">
+                </div>
+                <div class="column">
+                    <img id="dancer3Img" src="images/dancer3.png" alt="Dancer 3 Animation">
+                </div>
+                <div class="column">
+                    <img id="dancer4Img" src="images/dancer4.png" alt="Dancer 4 Animation">
+                </div>
+              </div>
+        </div>
+        <script>
+
+            // EVENT BASED PROGRAMMING
+
+            // Randomly changes the background color
+            function changeBackgroundColor () {
+                const r = Math.floor(Math.random()  * 120 + 135)
+                const g = Math.floor(Math.random() * 120 + 135)
+                const b = Math.floor(Math.random() * 120 + 135)
+                document.body.style.background = `rgb(${r}, ${g}, ${b})`
+            }
+
+            // Switches dancer positions 
+            function switchDancers() {
+                let d1 = document.getElementById('dancer1Img')
+                let d2 = document.getElementById('dancer2Img')
+                let d3 = document.getElementById('dancer3Img')
+                let d4 = document.getElementById('dancer4Img')
+                const dancerArr = [d1, d2, d3, d4]
+
+                const r1 = Math.floor(Math.random() * dancerArr.length)
+                let r2 = Math.floor(Math.random() * dancerArr.length)
+                while (r1 === r2) {
+                    r2 = Math.floor(Math.random() * dancerArr.length)
+                }
+                let firstDancer = dancerArr[r1]
+                let secondDancer = dancerArr[r2]
+                let fstImgSrc = dancerArr[r1].src
+                let sndImgSrc = dancerArr[r2].src
+                firstDancer.src = sndImgSrc
+                secondDancer.src = fstImgSrc
+                console.log("Switched dancers!")
+            }
+
+            // Adds clickable disco ball at mouse position
+            function createNewDiscoBall (e) {
+                const b = document.createElement('button')
+                b.innerHTML = '<img src="images/discoball0.png"/>'
+                b.style = 'background: none; outline: none; border: none;'
+                b.addEventListener('click', () => {
+                    const r = Math.floor(Math.random() * 5) // 0, 1, 2, 3. 4
+                    b.innerHTML = `<img src="images/discoball${r}.png""/>`
+                })
+                b.style.position = 'absolute'
+                b.style.top = (e.clientY - 10) + 'px' //y coord of mouse in px
+                b.style.left = (e.clientX - 10) + 'px' //x coord of mouse in px
+                document.body.appendChild(b)
+            }
+
+            // key down events
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'b') {
+                    changeBackgroundColor()
+                    console.log("Changed background!")
+                } else if (e.key === 'm') {
+                    switchDancers()
+                }
+            })
+
+            // mousedown event
+            document.addEventListener('mousedown', (e) => {
+                if (e.shiftKey) {
+                    createNewDiscoBall(e)
+                }
+            })
+
+        </script>
+    </body>
+</html>

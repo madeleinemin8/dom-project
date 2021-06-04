@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Maddie's Epilogue Project</title>
+        <style>
+            .box {
+                border: 10px dotted green;
+            }
+            #about {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <h1 id="title">Welcome to my Web App</h1>
+            <p>This is a cool web app</p>
+        </div>
+        <div class="box">
+            <ul>
+                <li id="about">about</li>
+                <li>contact</li>
+            </ul>
+        </div>
+
+        <script>
+            function bgChange () {
+                setTimeout(bgChange, 1000)
+                const h1 = document.querySelector('#title')
+                const r = Math.floor(Math.random() * 255)
+                const g = Math.floor(Math.random() * 255)
+                const b = Math.floor(Math.random() * 255)
+                h1.style.color = `rgb(${r}, ${g}, ${b})`
+            }
+
+            bgChange()
+
+            /*
+            document.addEventListener('click', () => {
+                for (let i = 0; i < 10; i++) {
+                    const d = document.createElement('div')
+                    d.textContent = "HELLO"
+                    d.addEventListener('mouseover', changeColor)
+                    document.body.appendChild(d)
+                }
+            })*/
+
+            /*let mousedown = false
+
+            function createNewButton (e) {
+                const b = document.createElement('button')
+                b.textContent = 'click me'
+                b.addEventListener('click', () => {
+                    const r = Math.floor(Math.random()  * 255)
+                    const g = Math.floor(Math.random() * 255)
+                    const b = Math.floor(Math.random() * 255)
+                    document.body.style.background = `rgb(${r}, ${g}, ${b})`
+                })
+                b.style.position = 'absolute'
+                b.style.top = e.clientY + 'px' //y coord of mouse in px
+                b.style.left = e.clientX + 'px' //x coord of mouse in px
+                document.body.appendChild(b)
+            }
+
+            document.addEventListener('mousedown', (e) => {
+                mousedown = true
+            })
+
+            document.addEventListener('mouseup', (e) => {
+                mousedown = false
+            })
+
+            document.addEventListener('mousemove', (e) => {
+                if (mousedown) {
+                    createNewButton(e)
+                }
+            })
+
+            document.addEventListener('keydown', (e) => {
+                if ()
+            }) */
+
+            //hi.addEventListener('click', changeText)
+            // hi.removeEventListener('click', changeText)
+
+            // anonymous functions
+            /*hi.addEventListener('click', () => {
+                hi.textContent = Math.random()
+            })
+            
+            function changeText () {
+                hi.textContent = Math.random()
+            }
+
+            hi.addEventListener('click', changeColor)
+            */
+        </script>
+    </body>
+</html>
